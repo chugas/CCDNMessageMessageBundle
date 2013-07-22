@@ -15,7 +15,7 @@
 
 	{%- spaceless -%}
 
-	<section>
+	<div>
 		{%- form_theme form ccdn_message_message.message.compose.form_theme -%}
 		<form action="{{- path('ccdn_message_message_mail_compose') -}}" method="post" {{ form_enctype(form) }} class="form-horizontal">
 			<fieldset>
@@ -49,7 +49,7 @@
 				</div>
 			</fieldset>
 		</form>
-	</section>
+	</div>
 			
 	{%- if preview is not empty -%}
 		<section>

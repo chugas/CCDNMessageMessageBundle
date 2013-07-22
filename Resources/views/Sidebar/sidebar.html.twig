@@ -52,7 +52,7 @@
 								{%- endif -%}
 							{%- endif -%}
 							
-							{{- folder.getName|title -}}
+							{{- folder.getName|trans({}, 'CCDNMessageMessageBundle')|title -}}
 							
 							{%- if folder.getCachedUnreadCount %}
 								<span class="label pull-right" style="vertical-align:top;background-color:#fff;color:#000;">{{- folder.getCachedUnreadCount -}}</span>
@@ -76,7 +76,7 @@
 								{%- endif -%}
 							{%- endif -%}
 							
-							{{- folder.getName|title -}}
+							{{- folder.getName|trans({}, 'CCDNMessageMessageBundle')|title -}}
 							
 							{%- if folder.getCachedUnreadCount -%}
 								<span class="label label-info pull-right">{{- folder.getCachedUnreadCount -}}</span>
@@ -101,7 +101,7 @@
 							{%- endif -%}
 						{%- endif -%}
 						
-						{{- folder.getName|title -}}
+						{{- folder.getName|trans({}, 'CCDNMessageMessageBundle')|title -}}
 						
 						{%- if folder.getCachedUnreadCount -%}
 							<span class="label label-info pull-right">{{- folder.getCachedUnreadCount -}}</span>

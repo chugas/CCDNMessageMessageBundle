@@ -4,7 +4,7 @@
 		{{- 'ccdn_message_message.sidebar.link.compose' | trans({}, 'CCDNMessageMessageBundle') -}}
 	</a>
 
-	<div class="btn-group">
+	<!--<div class="btn-group">
 		<button class="btn dropdown-toggle" data-toggle="dropdown">
 			<i class="icon-check"></i>
 			<span class="caret"></span>
@@ -13,7 +13,7 @@
 		<ul class="dropdown-menu">
 			<li>
 				<a href="#" data-action="select_none" data-identifier="{{- current_folder.name -}}">
-					{{- 'ccdn_message_message.link.message.select_none' |trans({}, 'CCDNMessageMessageBundle') -}}
+					{#{- 'ccdn_message_message.link.message.select_none' |trans({}, 'CCDNMessageMessageBundle') -}}
 				</a>
 			</li>
 			
@@ -47,11 +47,11 @@
 			
 			<li>
 				<a href="#" data-action="select_all" data-identifier="{{- current_folder.name -}}" data-qualifier="attached">
-					{{- 'ccdn_message_message.link.message.select_all_attached' |trans({}, 'CCDNMessageMessageBundle') -}}
+					{{- 'ccdn_message_message.link.message.select_all_attached' |trans({}, 'CCDNMessageMessageBundle') -}#}
 				</a>
 			</li>
 		</ul>
-	</div>
+	</div>-->
 
 	<div class="btn-group">
 		<button class="btn disabled dropdown-toggle hidden" disabled data-responds-disabled="{{- current_folder.name -}}" data-responds-hidden="{{- current_folder.name -}}" data-toggle="dropdown">
@@ -91,7 +91,7 @@
 			{%- for row, folder in folders -%}
 				<li>
 					<a href="#" data-action="submit_move_to" data-value="{{- folder.getId -}}">
-						{{- folder.getName|title -}}
+						{{- folder.getName|trans({}, 'CCDNMessageMessageBundle')|title -}}
 					</a>
 				</li>
 			{%- endfor -%}

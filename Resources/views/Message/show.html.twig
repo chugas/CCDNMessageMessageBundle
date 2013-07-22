@@ -8,7 +8,7 @@
 
   {%- spaceless -%}
 
-  <section>
+  <div>
     <div class="btn-toolbar">
       {%- if message.isDraft -%}
         <a class="btn btn-primary" href="{{- path('ccdn_message_message_mail_draft_send', {'messageId': message.id }) -}}">{{- 'ccdn_message_message.link.message.send_draft' |trans({}, 'CCDNMessageMessageBundle') -}}</a>&nbsp;
@@ -20,7 +20,7 @@
     </div>
 
     {%- include 'CCDNMessageMessageBundle:Message:Item/item_message.html.twig' with {'message': message} -%}
-  </section>
+  </div>
 
   {%- endspaceless -%}
 
