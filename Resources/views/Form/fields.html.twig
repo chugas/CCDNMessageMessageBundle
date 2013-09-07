@@ -122,7 +122,7 @@
 {% block field_label %}
 	{%- spaceless -%}
 		{%- set attr = attr|merge({ 'class': attr.class|default('') ~ ' control-label' ~ (required ? ' control-label-required':'')}) -%}
-	    <label for="{{- id -}}" {{ block('widget_attributes') -}}>
+	    <label for="{{- id -}}" {% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>
 			{%- if required -%}
 				<span style="color:#f00;" title="{{- 'ccdn_forum_forum.form.field.required' |trans({}, 'CCDNForumForumBundle') -}}">*</span>
 			{%- endif -%}
