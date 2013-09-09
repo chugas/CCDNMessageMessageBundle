@@ -38,19 +38,23 @@ class BaseManager
 	 * @access protected
 	 */
     protected $container;
+    
+    protected $mailer;
 
-	/**
+    /**
 	 *
 	 * @access public
 	 * @param $doctrine
 	 */
-    public function __construct($doctrine, $container)
+    public function __construct($doctrine, $container, $mailer)
     {
         $this->doctrine = $doctrine;
 
         $this->em = $doctrine->getEntityManager();
 
-		$this->container = $container;
+        $this->container = $container;
+        
+        $this->mailer = $mailer;
     }
 
 	/**

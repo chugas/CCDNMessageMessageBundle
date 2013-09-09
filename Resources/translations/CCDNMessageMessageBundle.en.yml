@@ -81,3 +81,9 @@ ccdn_message_message.item_message.sent.from: 'From: '
 ccdn_message_message.item_message.subject: 'Subject: '
 ccdn_message_message.item_message.sent_datetime: 'Sent On: '
 ccdn_message_message.item_message.attachment: 'Attachment: '
+
+#
+# Mail
+#
+ccdn_message_message.mailer.information: '%user_from% has sent you a message from website'
+ccdn_message_message.mailer.goto: 'Si quieres ver y responder el mensaje sigue el siguiente link: %message_link%'

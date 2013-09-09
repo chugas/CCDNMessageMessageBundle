@@ -1,0 +1,95 @@
+#
+# Page Titles.
+#
+ccdn_message_message.title.message.index: 'Mensajes - %folder_name%.'
+ccdn_message_message.title.message.show: 'Mensajes: %message_subject%.'
+ccdn_message_message.title.message.compose: 'Redactar Mensaje.'
+
+#
+# Crumbs.
+#
+ccdn_message_message.crumbs.message_index: 'Recibidos'
+ccdn_message_message.crumbs.compose_message: 'Redactar'
+ccdn_message_message.crumbs.compose_reply: 'Responder'
+ccdn_message_message.crumbs.compose_forward: 'Reenviar'
+
+#
+# Flash Messages.
+#
+ccdn_message_message.flash.message.sent.success: 'Mensaje enviardo a %user%.'
+ccdn_message_message.flash.message.send.inbox_full: 'La bandeja de entrada para el usuario %user% esta completa y no podra recibir tus mensajes.'
+ccdn_message_message.flash.message.draft.saved: 'Draft message saved.'
+ccdn_message_message.flash.send.flood_control: 'Flood Control - You have sent too much at once, take a break before sending again.'
+
+#
+# Sidebar.
+#
+ccdn_message_message.sidebar.header.tools: 'Herramientas'
+ccdn_message_message.sidebar.link.messages: 'Mensajes'
+ccdn_message_message.sidebar.link.compose: 'Redactar'
+
+#
+# Link Labels.
+#
+ccdn_message_message.link.message.reply: 'Responder'
+ccdn_message_message.link.message.forward: 'Reenviar'
+ccdn_message_message.link.message.delete: 'Eliminar'
+ccdn_message_message.link.message.mark_as_read: 'Marcar como leído'
+ccdn_message_message.link.message.mark_as_unread: 'Marcar como no leído'
+ccdn_message_message.link.message.move_to: 'Mover a: '
+ccdn_message_message.link.message.send_draft: 'Enviar'
+ccdn_message_message.link.message.select_none: 'Ninguno'
+ccdn_message_message.link.message.select_all: 'Todos'
+ccdn_message_message.link.message.select_all_read: 'Leído'
+ccdn_message_message.link.message.select_all_unread: 'No leído'
+ccdn_message_message.link.message.select_all_flagged: 'Marcado'
+ccdn_message_message.link.message.select_all_attached: 'Adjunto'
+ccdn_message_message.link.message.select_all_draft: 'Borrador'
+
+#
+# Forms.
+#
+ccdn_message_message.form.field.required: 'Este campor es requerido'
+ccdn_message_message.form.label.message.to: 'Para: '
+ccdn_message_message.form.label.message.subject: 'Asunto: '
+ccdn_message_message.form.label.message.body: 'Mensaje: '
+ccdn_message_message.form.label.message.flagged: 'Marcado como importante: '
+ccdn_message_message.form.label.message.attachment: 'Adjuntar: '
+ccdn_message_message.form.button.message.preview: 'Vista previa'
+ccdn_message_message.form.button.message.save_draft: 'Salvar borrador'
+ccdn_message_message.form.button.message.send: 'Enviar mensaje'
+ccdn_message_message.form.button.message.cancel: 'Cancelar'
+
+#
+# Table Labels.
+#
+ccdn_message_message.inbox.table.head.from: 'De'
+ccdn_message_message.inbox.table.head.to: 'Para'
+ccdn_message_message.inbox.table.head.subject: 'Asunto'
+ccdn_message_message.inbox.table.head.sent: 'Enviado'
+ccdn_message_message.inbox.table.empty: 'No tienes mensajes en esta carpeta.'
+
+#
+# Generic.
+#
+ccdn_message_message.label.folders: 'Carpetas'
+
+ccdn_message_message.message.inbox_status: 'Tienes %message_count% mensajes.'
+
+ccdn_message_message.item_message.send.to: 'Para: '
+ccdn_message_message.item_message.sent.from: 'De: '
+ccdn_message_message.item_message.subject: 'Asunto: '
+ccdn_message_message.item_message.sent_datetime: 'Enviado el: '
+ccdn_message_message.item_message.attachment: 'Adjuntar: '
+
+inbox: Recibidos
+sent: Enviados
+drafts: Borrador
+junk: Spam
+trash: Papelera
+
+#
+# Mail
+#
+ccdn_message_message.mailer.information: '%user_from% te ha enviado un mensaje desde el sitio web'
+ccdn_message_message.mailer.goto: 'Si quieres ver y responder el mensaje sigue el siguiente link: %message_link%'

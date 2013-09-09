@@ -86,6 +86,8 @@ class CCDNMessageMessageExtension extends Extension
      */
     private function getMessageSection($container, $config)
     {
+        $container->setParameter('ccdn_message_message.manager.mailer.from', $config['mailer']['from']);
+      
         $container->setParameter('ccdn_message_message.message.flood_control.send_limit', $config['message']['flood_control']['send_limit']);
         $container->setParameter('ccdn_message_message.message.flood_control.block_for_minutes', $config['message']['flood_control']['block_for_minutes']);
 

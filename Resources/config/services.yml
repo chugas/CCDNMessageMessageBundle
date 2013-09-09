@@ -19,6 +19,9 @@ parameters:
     ccdn_message_message.component.flood_control.class:                         CCDNMessage\MessageBundle\Component\FloodControl
 
     ccdn_message_message.component.menu_builder.menu.class:                     CCDNMessage\MessageBundle\Component\MenuBuilder\Menu
+    
+    ccdn_message_message.manager.mailer.class:                                  CCDNMessage\MessageBundle\Manager\MailerManager
+    ccdn_message_message.manager.mailer.from:                                   %ccdn_message_message.manager.mailer.from%
 
 services:
 
@@ -49,13 +52,16 @@ services:
     #
     ccdn_message_message.manager.message:
         class: %ccdn_message_message.manager.message.class%
-        arguments:  [@doctrine, @service_container]
+        arguments:  [@doctrine, @service_container, @ccdn_message_message.manager.mailer]
     ccdn_message_message.manager.folder:
         class: %ccdn_message_message.manager.folder.class%
-        arguments:  [@doctrine, @service_container]
+        arguments:  [@doctrine, @service_container, @ccdn_message_message.manager.mailer]
     ccdn_message_message.manager.registry:
         class: %ccdn_message_message.manager.registry.class%
-        arguments:  [@doctrine, @service_container]
+        arguments:  [@doctrine, @service_container, @ccdn_message_message.manager.mailer]
+    ccdn_message_message.manager.mailer:
+        class: %ccdn_message_message.manager.mailer.class%
+        arguments:  [%ccdn_message_message.manager.mailer.from%, @swiftmailer.mailer.queue]
 
 
     #

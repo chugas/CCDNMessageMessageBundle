@@ -1,0 +1,13 @@
+{% block subject %}
+{% autoescape false %}
+  {{ 'ccdn_message_message.mailer.information'|trans({'%user_from%': message.getSentFrom() }, 'CCDNMessageMessageBundle') }}
+{% endautoescape %}
+{% endblock %}
+
+<br /><br />
+
+{% block body_text %}
+{% autoescape false %}
+  {{ message.body | nl2br }}
+{% endautoescape %}
+{% endblock %}

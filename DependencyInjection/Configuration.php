@@ -54,7 +54,8 @@ class Configuration implements ConfigurationInterface
         $this->addFolderSection($rootNode);
         $this->addMessageSection($rootNode);
         $this->addQuotasSection($rootNode);
-
+        $this->addMailerSection($rootNode);
+        
         return $treeBuilder;
     }
 
@@ -121,14 +122,14 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
-						->arrayNode('flood_control')
+                        ->arrayNode('flood_control')
 		                    ->addDefaultsIfNotSet()
 		                    ->canBeUnset()
-							->children()
-								->scalarNode('send_limit')->defaultValue(4)->end()
-								->scalarNode('block_for_minutes')->defaultValue(1)->end()
-							->end()
-						->end()
+                                    ->children()
+                                            ->scalarNode('send_limit')->defaultValue(4)->end()
+                                            ->scalarNode('block_for_minutes')->defaultValue(1)->end()
+                                    ->end()
+                            ->end()
                         ->arrayNode('show')
 		                    ->addDefaultsIfNotSet()
 		                    ->canBeUnset()
@@ -167,6 +168,21 @@ class Configuration implements ConfigurationInterface
                     ->canBeUnset()
                     ->children()
                         ->scalarNode('max_messages')->defaultValue('200')->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+    
+    protected function addMailerSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('mailer')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset()
+                    ->children()
+                        ->scalarNode('from')->defaultValue('soporte@example.com')->end()
                     ->end()
                 ->end()
             ->end();

@@ -25,6 +25,7 @@ use CCDNMessage\MessageBundle\Entity\Message;
  */
 class MessageManager extends BaseManager implements ManagerInterface
 {
+  protected $message;
 
 	/**
 	 *
@@ -172,7 +173,9 @@ class MessageManager extends BaseManager implements ManagerInterface
         }
 
         $this->persist($temp);
-
+        
+        $this->message = $temp;
+        
         return $this;
     }
 
@@ -216,12 +219,13 @@ class MessageManager extends BaseManager implements ManagerInterface
         $this->sendTo($message, null, $user, true);
 
         $this->flush();
-
+        
         //
         // Update recipients folders read/unread cache counts.
         //
         foreach ($sendToUsers as $recipient) {
             $this->updateAllFolderCachesForUser($recipient);
+            $this->sendRealEmail($this->message, $recipient, $user);
         }
 
         return $this;
@@ -383,4 +387,8 @@ class MessageManager extends BaseManager implements ManagerInterface
         return $this;
     }
 
+    protected function sendRealEmail($message, $recipient, $user) {
+      $body = $this->container->get('templating')->render('CCDNMessageMessageBundle:Message:mail.html.twig', array('message' => $message));
+      $this->mailer->send($message->getSubject(), $body, $user->__toString(), $recipient->getEmail());
+    }
 }
