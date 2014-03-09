@@ -170,11 +170,10 @@ class MessageManager extends BaseManager implements ManagerInterface
             $temp->setOwnedBy($recipient);
             $temp->setFolder($folders[0]);
             $temp->setIsRead(false);
+            $this->message = $temp;
         }
 
         $this->persist($temp);
-        
-        $this->message = $temp;
         
         return $this;
     }

@@ -17,6 +17,8 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\SecurityContext;
+use Application\Success\PortalBundle\Exception\InvalidTokenException;
 
 /**
  *
@@ -54,10 +56,11 @@ class MessageController extends ContainerAware {
     //
     // Get the message.
     //
-        $message = $this->container->get('ccdn_message_message.repository.message')->findMessageByIdForUser($messageId, $user->getId());
+    $message = $this->container->get('ccdn_message_message.repository.message')->findMessageByIdForUser($messageId, $user->getId());
 
     if (!$message) {
-      throw new NotFoundHttpException('No such message found!');
+      throw new AccessDeniedException('You do not have access to this section.');
+      //throw new NotFoundHttpException('No such message found!');
     }
 
     $currentFolder = $folderManager->getCurrentFolder($folders, $message->getFolder()->getName());
@@ -93,8 +96,13 @@ class MessageController extends ContainerAware {
     //
     //	Invalidate this action / redirect if user should not have access to it
     //
-        if (!$this->container->get('security.context')->isGranted('ROLE_USER')) {
+    if (!$this->container->get('security.context')->isGranted('ROLE_USER')) {
+      $this->container->get('request')->getSession()->set(SecurityContext::LAST_USERNAME, $this->container->get('request')->get('email'));
       throw new AccessDeniedException('You do not have permission to use this resource!');
+    }
+    
+    if(!$this->container->get('success.security.token')->isValid($this->container->get('request')->get('token', null))){
+      throw new InvalidTokenException('You do not have permission to use this resource!');
     }
 
     $user = $this->container->get('security.context')->getToken()->getUser();
@@ -319,7 +327,7 @@ class MessageController extends ContainerAware {
     //
     //	Invalidate this action / redirect if user should not have access to it
     //
-        if (!$this->container->get('security.context')->isGranted('ROLE_USER')) {
+    if (!$this->container->get('security.context')->isGranted('ROLE_USER')) {
       throw new AccessDeniedException('You do not have permission to use this resource!');
     }
 

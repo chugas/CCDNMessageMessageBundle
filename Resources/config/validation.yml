@@ -11,7 +11,7 @@ CCDNMessage\MessageBundle\Entity\Message:
         subject:
             - Type: string
             - NotBlank: ~
-            - MinLength: { limit: 5 }
+            - MinLength: { limit: 2 }
             - MaxLength: { limit: 255 }
         body:
             - Type: string
