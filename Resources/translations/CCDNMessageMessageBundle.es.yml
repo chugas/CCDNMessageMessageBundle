@@ -1,0 +1,90 @@
+dashboard:
+    pages:
+        account:             "Cuenta"
+    categories:
+        account:             "Cuenta"
+
+title:
+    folder:
+        index:               "Bandeja de entrada"
+        show:                "Mensajes - %folderName%"
+    message:
+        show:                "Mensaje: %message_subject%"
+        compose:             "Redactar Mensaje"
+
+crumbs:
+    user:
+        message:
+            compose:
+                new:         "Redactar Nuevo Mensaje"
+                reply:       "Responder"
+                forward:     "Reenviar"
+
+sidebar:
+    header:
+        tools:               "Herramientas"
+        folders:             "Carpetas"
+
+link:
+    message:
+        messages:            "Mensajes"
+        compose:             "Redactar"
+        reply:               "Responder"
+        forward:             "Reenviar"
+        delete:              "Eliminar"
+        mark_as_read:        "Marcar Leido"
+        mark_as_unread:      "Marcar No Leido"
+        move_to:             "Mover a"
+        send_draft:          "Enviar"
+        select_none:         "Ninguno"
+        select_all:          "Todos"
+        select_all_read:     "Leido"
+        select_all_unread:   "No Leido"
+        select_all_flagged:  "Importante"
+        select_all_attached: "Adjunto"
+        select_all_draft:    "Papelera"
+
+form:
+    required:                "Este campo es requerido"
+    label:
+        to:                  "Para"
+        subject:             "Asunto"
+        body:                "Mensaje"
+        flagged:             "Marcar como importante"
+    button:
+        send:                "Enviar"
+        preview:             "Vista Previa"
+        save_draft:          "Salvar Borrador"
+        cancel:              "Cancelar"
+
+message:
+    sent-from-label:         "De: "
+    send-to-label:           "Para: "
+    subject-label:           "Asunto: "
+    sent-datetime-label:     "Fecha: "
+
+generic:
+    thead:
+        from:                "De"
+        to:                  "Para"
+        subject:             "Asunto"
+        sent:                "Enviado"
+    message:
+        inbox_status:        "Tienes %message_count% mensajes"
+        none:                "No tienes mensajes en esta carpeta."
+
+flash:
+    success:
+        message:
+            sent:            "Mensaje enviado a %user%."
+        draft:
+            saved:           "El mensaje se ha guardado correctamente."
+    error:
+        message:
+            inbox_full:      "La bandeja de entrada de %user% esta llena y no podra recibir tu mensaje."
+            flood_control:   "Flood Control - Has enviado demasiados mensajes a la vez, toma un descanso antes de enviar de nuevo."
+
+inbox: Recibidos
+sent: Enviados
+drafts: Borrador
+trash: Papelera

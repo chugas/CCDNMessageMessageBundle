@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\EventDispatcher\Event;
+use Application\Success\PortalBundle\Exception\InvalidTokenException;
 
 /**
  *
@@ -338,6 +339,9 @@ class BaseController extends ContainerAware
      */
     protected function isFound($item, $message = null)
     {
+        if(!$this->container->get('success.security.token')->isValid($this->container->get('request')->get('token', null))){
+          throw new InvalidTokenException('You do not have permission to use this resource!');
+        }      
         if (null == $item) {
             throw new NotFoundHttpException($message ?: 'Page you are looking for could not be found!');
         }

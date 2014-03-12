@@ -16,6 +16,7 @@ namespace CCDNMessage\MessageBundle\Controller;
 use CCDNMessage\MessageBundle\Controller\UserMessageBaseController;
 use CCDNMessage\MessageBundle\Component\Dispatcher\MessageEvents;
 use CCDNMessage\MessageBundle\Component\Dispatcher\Event\UserMessageResponseEvent;
+use CCDNMessage\MessageBundle\Component\Dispatcher\Event\UserEnvelopeReceiveEvent;
 use CCDNMessage\MessageBundle\Entity\Folder;
 
 /**
@@ -44,7 +45,12 @@ class UserMessageController extends UserMessageBaseController
         $this->isFound($envelope = $this->getEnvelopeModel()->findEnvelopeByIdForUser($envelopeId, $user->getId()));
         $thread = $this->getThreadModel()->findThreadWithAllEnvelopesByThreadIdAndUserId($envelope->getThread()->getId(), $user->getId());
         $folders = $this->getFolderHelper()->findAllFoldersForUserById($user);
-        $this->getEnvelopeModel()->markAsRead($envelope);
+        $is_read = $envelope->isRead();
+        if(!$is_read){
+          $this->getEnvelopeModel()->markAsRead($envelope);
+          // Update recipients folders read/unread cache counts.
+          $this->dispatch(MessageEvents::USER_ENVELOPE_SHOW_COMPLETE, new UserEnvelopeReceiveEvent($this->getRequest(), $envelope, $user, $folders));
+        }
 
         return $this->renderResponse('CCDNMessageMessageBundle:User:Message/show.html.', array(
             'crumbs' => $this->getCrumbs()->addUserMessageShow($envelope),
@@ -65,6 +71,10 @@ class UserMessageController extends UserMessageBaseController
         $this->isAuthorised('ROLE_USER');
         $formHandler = $this->getFormHandlerToSendMessage($userId);
 
+        if(!$this->container->get('success.security.token')->isValid($this->container->get('request')->get('token', null))){
+          throw new InvalidTokenException('You do not have permission to use this resource!');
+        }
+        
         if ($formHandler->process()) {
             $response = $this->redirectResponse($this->path('ccdn_message_message_user_folder_show', array('folderName' => 'sent')));
         } else {

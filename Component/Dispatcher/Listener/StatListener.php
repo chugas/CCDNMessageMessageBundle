@@ -77,6 +77,7 @@ class StatListener implements EventSubscriberInterface
     {
         return array(
             MessageEvents::USER_ENVELOPE_RECEIVE_COMPLETE => 'onEnvelopeReceiveComplete',
+            MessageEvents::USER_ENVELOPE_SHOW_COMPLETE => 'onEnvelopeReceiveComplete',            
         );
     }
 

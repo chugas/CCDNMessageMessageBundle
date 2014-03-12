@@ -16,6 +16,8 @@ namespace CCDNMessage\MessageBundle\Controller;
 use CCDNMessage\MessageBundle\Controller\BaseController;
 
 use CCDNMessage\MessageBundle\Entity\Folder;
+use CCDNMessage\MessageBundle\Component\Dispatcher\MessageEvents;
+use CCDNMessage\MessageBundle\Component\Dispatcher\Event\UserEnvelopeReceiveEvent;
 
 /**
  *
@@ -82,6 +84,11 @@ class UserFolderBaseController extends BaseController
 
         if ($submitAction == 'send') {
             $this->getMessageModel()->bulkSendDraft($envelopes);
+        }
+
+        foreach ($envelopes as $envelope){
+          // Update recipients folders read/unread cache counts.
+          $this->dispatch(MessageEvents::USER_ENVELOPE_SHOW_COMPLETE, new UserEnvelopeReceiveEvent($this->getRequest(), $envelope, $user, $folders));        
         }
     }
 }

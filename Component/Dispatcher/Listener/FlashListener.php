@@ -86,7 +86,7 @@ class FlashListener implements EventSubscriberInterface
     {
         if ($envelope = $event->getEnvelope()) {
             if ($envelope->getId()) {
-                $this->session->getFlashBag()->add('success', 'Message sent successfully to ' . $event->getRecipient()->getUsername() . '.');
+                //$this->session->getFlashBag()->add('success', 'Message sent successfully to ' . $event->getRecipient()->getUsername() . '.');
             }
         }
     }

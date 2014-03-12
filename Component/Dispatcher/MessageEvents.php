@@ -170,6 +170,8 @@ final class MessageEvents
      */
     const USER_ENVELOPE_RECEIVE_COMPLETE = 'ccdn_message.user.envelope.receive.complete';
 
+    const USER_ENVELOPE_SHOW_COMPLETE = 'ccdn_message.user.envelope.receive.complete';
+    
     /**
      *
      * The USER_ENVELOPE_RECEIVE_FAILED_INBOX_FULL event occurs when the envelope receiving process fails due to users inbox being full.

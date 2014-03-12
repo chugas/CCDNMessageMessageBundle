@@ -211,7 +211,7 @@ class MessageReplyFormHandler extends BaseFormHandler
                 $sendTo = 'Guest';
             }
 
-            $message = '[QUOTE="' . $sendTo . '"]' . $body . '[/QUOTE]';
+            $message = '[MESSAGE="' . $sendTo . '"]' . $body . '[/MESSAGE]';
         } else {
             $message = '';
         }
